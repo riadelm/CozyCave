@@ -10,7 +10,6 @@
       "persistent": false
     },
     "web_accessible_resources": ["rain1.mp3","train.mp3","snowstorm.mp3","thunder.mp3","fireplace.mp3","cafe.mp3"],
-    "background_page" : "background.html",
     "browser_action": {
       "default_popup": "popup.html",
       "default_icon": {

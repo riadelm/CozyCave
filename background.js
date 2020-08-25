@@ -1,5 +1,8 @@
-  //chrome specific extension apis === don't forget to include them in permissions array in manifest
-  //extension background work in js
+/*
+ * Copyright (C) 2020 Riad El Mahmoudy
+ * This file is subject to the terms and conditions defined in
+ * file "LICENSE.txt", which is part of this source code package.
+ */
 
 var oldRainVolume = 0;
 
@@ -154,7 +157,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
          		 });
      	 }
 
-     	 if(key==="rainMusic"){
+          if(key==="rainMusic"){
      	 	chrome.storage.local.set({isRainOn: storageChange.newValue},function(){
      	 		console.log("stored");
      	 	});
@@ -179,21 +182,8 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
      	 		console.log("stored");
      	 	});
      	 } 
-         /* chrome.runtime.sendMessage({sliderValue: newRainVolume},function(response){
-          	console.log("-----------------");
-          	console.log(newRainVolume);
-          	//console.log(response);
-          	console.log("-----------------");
-          });*/
+        
         }
       });
-  
-/*chrome.storage.onChanged.addListener(function(){
-chrome.storage.local.get(['rainVolume'],function(result){
-console.log(result);
-  });
-   chrome.storage.local.get(['rainMusic'],function(result){
-console.log(result);
-  });
-});*/
+
 

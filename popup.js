@@ -1,6 +1,19 @@
-  //front end logic for popup html
 
-  //relative to storage
+/*
+ * Copyright (C) 2020 Riad El Mahmoudy
+ * This file is subject to the terms and conditions defined in
+ * file "LICENSE.txt", which is part of this source code package.
+ */
+
+/* ATTRIBUTIONS FOR ICONS
+Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+*/
+
+/* ATTRIBUTIONS FOR SOUNDS
+Credit for the sounds goes to user Alexander from orangefreesounds.com
+*/
 
 
  /*
@@ -41,12 +54,7 @@ console.log(btn);
 
 //toggle click
 
-/* ATTRIBUTIONS FOR ICONS
-Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
-*/
 
 var musicToggle1 = false; //rain
 var musicToggle2 = false; //thunder
@@ -66,7 +74,7 @@ window.onload = function() {
     chrome.storage.local.get(["isRainOn"],function(result){
        if(result.isRainOn==="on"){
        	rainBox.style.backgroundColor="#c4815c";
-       	alert("ON");
+   
        	musicToggle1 = true;
        chrome.storage.local.get(["lastRainVol"],function(result){
     	rainSlider.value = result.lastRainVol;
@@ -78,7 +86,7 @@ window.onload = function() {
 
     chrome.storage.local.get(["isThunderOn"],function(result){
        if(result.isThunderOn==="on"){
-       	alert("ON");
+
        	thunderBox.style.backgroundColor="#bf6b56";
        	musicToggle2 = true;
  		 chrome.storage.local.get(["lastThunderVol"],function(result){
@@ -91,7 +99,7 @@ window.onload = function() {
 
     chrome.storage.local.get(["isSnowstormOn"],function(result){
        if(result.isSnowstormOn==="on"){
-       	alert("ON");
+
        	snowstormBox.style.backgroundColor="#2c2438";
        	musicToggle3 = true;
   
@@ -105,7 +113,7 @@ window.onload = function() {
 
     chrome.storage.local.get(["isFireplaceOn"],function(result){
        if(result.isFireplaceOn==="on"){
-       	alert("ON");
+
        	fireplaceBox.style.backgroundColor="#23202e";
        	musicToggle4 = true;
    
@@ -119,7 +127,7 @@ window.onload = function() {
 
     chrome.storage.local.get(["isCafeOn"],function(result){
        if(result.isCafeOn==="on"){
-       	alert("ON");
+ 
        	cafeBox.style.backgroundColor="#753240";
        	musicToggle5 = true;
 
@@ -133,7 +141,7 @@ window.onload = function() {
 
     chrome.storage.local.get(["isTrainOn"],function(result){
        if(result.isTrainOn==="on"){
-       	alert("ON");
+
        	trainBox.style.backgroundColor="#b5575a";
        	musicToggle6 = true;
 
@@ -145,41 +153,7 @@ window.onload = function() {
        }
     });
 
-/*if(checkSilence==="nothing"){
-	alert("checkSilence is 0; it was NOT on");
-	rainSlider.value = 50;
-	thunderSlider.value = 50;
-	snowstormSlider.value = 50;
-	fireplaceSlider.value = 50;
-	trainSlider.value = 50;
-	cafeSlider.value = 50;
-}else{
- alert("else, it was on");
- chrome.storage.local.get(["lastRainVol"],function(result){
-    	rainSlider.value = result.lastRainVol;
-    });
-
-    chrome.storage.local.get(["lastThunderVol"],function(result){
-    	thunderSlider.value = result.lastThunderVol;
-    });
-
-    chrome.storage.local.get(["lastSnowstormVol"],function(result){
-    	snowstormSlider.value = result.lastSnowstormVol;
-    });
-
-    chrome.storage.local.get(["lastFireplaceVol"],function(result){
-    	fireplaceSlider.value = result.lastFireplaceVol;
-    });
-
-    chrome.storage.local.get(["lastCafeVol"],function(result){
-    	cafeSlider.value = result.lastCafeVol;
-    });
-
-    chrome.storage.local.get(["lastTrainVol"],function(result){
-    	trainSlider.value = result.lastTrainVol;
-    });
-    // = lastRainVol;
-}*/
+/
 };
 
 //volume is relate to storage, for on or off either musicToggle will make that work or another msg will have to be sent
@@ -205,7 +179,7 @@ thunderSlider.addEventListener("click",function(){
 			   chrome.runtime.sendMessage({thunderMusic:"on", volume: currentThunderSliderVolume, file:"thunder"}, function(response) {
 			   	thunderBox.style.backgroundColor="#bf6b56";
 			   	musicToggle2 = true;
-			   	//alert("msg sent");
+			  
 				console.log(response);
 			});
 			   chrome.storage.local.set({thunderMusic:"on"}, function() {
@@ -219,7 +193,7 @@ trainSlider.addEventListener("click",function(){
 			   chrome.runtime.sendMessage({trainMusic:"on", volume: currentTrainSliderVolume, file:"train"}, function(response) {
 			   	trainBox.style.backgroundColor="#b5575a";
 			   	musicToggle6 = true;
-			   	alert("msg sent");
+			 
 				console.log(response);
 			});
 			   chrome.storage.local.set({trainMusic:"on"}, function() {
@@ -233,7 +207,7 @@ cafeSlider.addEventListener("click",function(){
 			   chrome.runtime.sendMessage({cafeMusic:"on", volume: currentCafeSliderVolume, file:"cafe"}, function(response) {
 			   	cafeBox.style.backgroundColor="#753240";
 			   	musicToggle5 = true;
-			   	alert("msg sent");
+			   
 				console.log(response);
 			});
 			   chrome.storage.local.set({cafeMusic:"on"}, function() {
@@ -247,7 +221,7 @@ snowstormSlider.addEventListener("click",function(){
 			   chrome.runtime.sendMessage({snowstormMusic:"on", volume: currentSnowstormSliderVolume, file:"snowstorm"}, function(response) {
 			   	snowstormBox.style.backgroundColor="#2c2438";
 			   	musicToggle3 = true;
-			   	alert("msg sent");
+			   
 				console.log(response);
 			});
 			   chrome.storage.local.set({snowstormMusic:"on"}, function() {
@@ -261,7 +235,7 @@ fireplaceSlider.addEventListener("click",function(){
 			   chrome.runtime.sendMessage({fireplaceMusic:"on", volume: currentFireplaceSliderVolume, file:"fireplace"}, function(response) {
 			   	fireplaceBox.style.backgroundColor="#23202e";
 			   	musicToggle4 = true;
-			   	alert("msg sent");
+			   
 				console.log(response);
 			});
 			   chrome.storage.local.set({fireplaceMusic:"on"}, function() {
@@ -273,7 +247,7 @@ fireplaceSlider.addEventListener("click",function(){
 // music listeners
 
 rain.addEventListener("click",function(){
-	alert("clicked rain");
+	
 	var currentRainSliderVolume = rainSlider.value;
 			if(musicToggle1===false){
 				chrome.runtime.sendMessage({rainMusic: "on",volume: currentRainSliderVolume, file:"rain"}, function(response) {
@@ -302,9 +276,8 @@ rain.addEventListener("click",function(){
     
 	});
 thunder.addEventListener("click",function(){
-	alert("clicked thunda");
-	var currentThunderSliderVolume = thunderSlider.value;
 	
+	var currentThunderSliderVolume = thunderSlider.value;
 			if(musicToggle2===false){
 				chrome.runtime.sendMessage({thunderMusic: "on",volume: currentThunderSliderVolume, file:"thunder"}, function(response) {
 					thunderBox.style.backgroundColor="#bf6b56";
@@ -333,7 +306,7 @@ thunder.addEventListener("click",function(){
 	});
 
 snowstorm.addEventListener("click",function(){
-	alert("clicked snew");
+	
 	var currentSnowstormSliderVolume = snowstormSlider.value;
 			if(musicToggle3===false){
 				chrome.runtime.sendMessage({snowstormMusic: "on",volume: currentFireplaceSliderVolume, file:"snowstorm"}, function(response) {
@@ -361,7 +334,7 @@ snowstorm.addEventListener("click",function(){
 	});
 
 fireplace.addEventListener("click",function(){
-	alert("clicked faya");
+	
 	var currentFireplaceSliderVolume = fireplaceSlider.value;
 			if(musicToggle4===false){
 				chrome.runtime.sendMessage({fireplaceMusic: "on", volume: currentFireplaceSliderVolume, file:"fireplace"}, function(response) {
@@ -416,7 +389,7 @@ cafe.addEventListener("click",function(){
 	});
 
 train.addEventListener("click",function(){
-	alert("clicked trrrrain");
+	
 	var currentTrainSliderVolume = trainSlider.value;
 			if(musicToggle6===false){
 				chrome.runtime.sendMessage({trainMusic: "on",volume: currentTrainSliderVolume, file:"train"}, function(response) {
