@@ -182,8 +182,21 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
      	 		console.log("stored");
      	 	});
      	 } 
-        
+         /* chrome.runtime.sendMessage({sliderValue: newRainVolume},function(response){
+          	console.log("-----------------");
+          	console.log(newRainVolume);
+          	//console.log(response);
+          	console.log("-----------------");
+          });*/
         }
       });
-
+  
+/*chrome.storage.onChanged.addListener(function(){
+chrome.storage.local.get(['rainVolume'],function(result){
+console.log(result);
+  });
+   chrome.storage.local.get(['rainMusic'],function(result){
+console.log(result);
+  });
+});*/
 
