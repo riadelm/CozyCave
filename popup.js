@@ -232,12 +232,16 @@ window.onload = function() {
 };
 function setColorOnChange(rainBox, ULColor1, ULColor2){
 	rainBox.style.backgroundColor= ULColor1;
+
 	rainBox.addEventListener("mouseover",function(){
 		rainBox.style.backgroundColor= ULColor2;
 		});
-		//rainBox.addEventListener("mouseout", function() {
-		//rainBox.style.backgroundColor= ULColor1;
-		//});
+		
+		rainBox.addEventListener("mouseout", function() {
+		rainBox.style.backgroundColor= ULColor1;
+		});
+		
+		
 }
 //volume is relate to storage, for on or off either musicToggle will make that work or another msg will have to be sent
 seasonChanger.addEventListener("click", function(){
@@ -335,6 +339,7 @@ seasonChanger.addEventListener("click", function(){
 			  chrome.runtime.sendMessage({cafeMusic: "off",volume:50, file:"cafe", season:"fallCng"}, function(response){
 			   console.log("resettoggle");
 			  });
+			  
 			  chrome.storage.local.set({rainMusic:"off"}, function() {
 			});
 	
@@ -388,7 +393,7 @@ rainSlider.addEventListener("click",function(){
 		 });
 		}else{
 			chrome.runtime.sendMessage({rainMusic:"on", volume: currentRainSliderVolume, file:"rain"}, function(response) {
-				rainBox.style.backgroundColor=ULColor3;
+				rainBox.style.backgroundColor=ULColor4;
 				musicToggle1 = true;
 				
 			 console.log(response);
@@ -438,7 +443,7 @@ trainSlider.addEventListener("click",function(){
 		 });
 		}else{
 			chrome.runtime.sendMessage({trainMusic:"on", volume: currentTrainSliderVolume, file:"train", season:"fall"}, function(response) {
-				trainBox.style.backgroundColor=MLColor3;
+				trainBox.style.backgroundColor=MLColor4;
 				musicToggle6 = true;
 				//alert("msg sent");
 			 console.log(response);
@@ -555,7 +560,7 @@ if(seasonToggle===true){
 		}else{
 			if(musicToggle1===false){
 				chrome.runtime.sendMessage({rainMusic: "on",volume: currentRainSliderVolume, file:"rain"}, function(response) {
-					rainBox.style.backgroundColor=ULColor3;
+					rainBox.style.backgroundColor=ULColor4;
 					musicToggle1=true;
   				console.log(response);
 				});
@@ -566,7 +571,7 @@ if(seasonToggle===true){
         });
 			}else if(musicToggle1===true){
 				chrome.runtime.sendMessage({rainMusic: "off",volume:50, file:"rain"}, function(response) {
-					rainBox.style.backgroundColor=ULColor4;
+					rainBox.style.backgroundColor=ULColor3;
 					musicToggle1=false;
   				console.log(response);
 				});
