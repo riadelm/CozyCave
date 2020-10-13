@@ -47,9 +47,38 @@ trainAudio.loop="loop";
 var cafeAudio = new Audio();   
 cafeAudio.src = chrome.extension.getURL("cafe.mp3");
 cafeAudio.loop="loop";
-
+//===========================================================================
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 	console.log(message);
+	if(message.season==="springCng"){
+		console.log("spring time");
+		rainAudio.src = chrome.extension.getURL("birds.mp3");
+		thunderAudio.src = chrome.extension.getURL("springrain.mp3");
+		trainAudio.src = chrome.extension.getURL("beach.mp3");
+		cafeAudio.src = chrome.extension.getURL("river.mp3");
+		snowstormAudio.src = chrome.extension.getURL("breeze.mp3");
+		fireplaceAudio.src = chrome.extension.getURL("bugs.mp3");
+		thunderAudio.load();
+		trainAudio.load();
+		cafeAudio.load();
+		snowstormAudio.load();
+		fireplaceAudio.load();
+		rainAudio.load();
+	}else if(message.season==="fallCng"){
+		console.log("spooky time");
+		rainAudio.src = chrome.extension.getURL("rain1.mp3");
+		thunderAudio.src = chrome.extension.getURL("thunder.mp3");
+		trainAudio.src = chrome.extension.getURL("train.mp3");
+		cafeAudio.src = chrome.extension.getURL("cafe.mp3");
+		snowstormAudio.src = chrome.extension.getURL("snowstorm.mp3");
+		fireplaceAudio.src = chrome.extension.getURL("fireplace.mp3");
+		thunderAudio.load();
+		trainAudio.load();
+		cafeAudio.load();
+		snowstormAudio.load();
+		fireplaceAudio.load();
+		rainAudio.load();
+	}
 	switch(message.file){
 		case "rain":
 			rainAudio.volume = message.volume/100;
@@ -94,17 +123,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
       			cafeAudio.pause();
     		}
 	}
-
-
-	/*myAudio.volume = message.volume/100;
-    console.log(myAudio.volume);
-	console.log(message.volume);
-    if (message.music == 'on') {
-      myAudio.play();
-    } else if (message.music == 'off') {
-      myAudio.pause();
-    }*/
-
 
   });
 

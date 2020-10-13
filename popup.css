@@ -6,26 +6,29 @@
 
 
 body{
-  height: 600px; /* popovers have a max height of 600px */
-        width: 360px;
+        height: 600px; /* popovers have a max height of 600px */
+        width: 372px;
         padding: 0;
         margin: 0;
+        border-bottom-left-radius: 50px 20px;
+        border-bottom-right-radius: 50px 20px;
+       
       }
    .square{
-    width:180px;
-    height:150px;
+    width:186px;
+    height:186px;
      padding: 0;
         margin: 0;
 
    }
    .row{
-     height:200px;
+     height:186px;
      display:flex;
    }
 
    .brown{
-    width:180px;
-    height:200px;
+    width:186px;
+    height:186px;
      padding: 0;
         margin: 0;
         -o-transition:.5s;
@@ -37,8 +40,8 @@ body{
    }
 
    .green{
-    width:180px;
-    height:200px;
+    width:186px;
+    height:186px;
      padding: 0;
         margin: 0;
         -o-transition:.5s;
@@ -77,7 +80,7 @@ body{
    }
 
    #box6{
-    background-color:#565264;
+    background-color:#565168;
    }
 
     #box1:hover{
@@ -117,10 +120,31 @@ body{
   /* ...and now for the proper property */
   transition:.5s;
    }
+   #iconSlider{
+  
+     padding: 0;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     width: 42px; 
+    max-width: 100px;
+    height:42px;
+    transform:scale(1,1);
+    filter:invert(100%);
+     -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition:.5s;
+   }
+
 
    .icon:hover{
     transform:scale(0.5,0.5);
    }
+
+  
 
    input[type="range"] {
  -webkit-appearance: none;
@@ -133,11 +157,13 @@ input[type="range"]:focus {
 input[type="range"]::-webkit-slider-runnable-track {
  background: white;
  height: 1px;
+ margin-top: -100px;
 }
 
 input[type="range"]::-moz-range-track {
  background: white;
  height: 1px;
+ margin-top: -100px;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -161,7 +187,7 @@ input[type="range"]::-moz-range-thumb {
   max-width: 100%;
   width:100%;
   transform:scale(0.7,0.7);
-  margin:0;
+  margin-top:-20px;
   padding: 0;
 }
 
@@ -170,6 +196,12 @@ input[type="range"]::-moz-range-thumb {
   padding: 0;
 }
 
+#changeUp{
+height: 42px;
+width: 372px;
+background-color:#465353;
+
+}
 
 
 

@@ -7,9 +7,9 @@
     "permissions":["activeTab", "declarativeContent", "storage", "<all_urls>","background"],
      "background": {
       "scripts": ["background.js"],
-      "persistent": false
+      "persistent": true
     },
-    "web_accessible_resources": ["rain1.mp3","train.mp3","snowstorm.mp3","thunder.mp3","fireplace.mp3","cafe.mp3"],
+    "web_accessible_resources": ["rain1.mp3","train.mp3","snowstorm.mp3","thunder.mp3","fireplace.mp3","cafe.mp3","birds.mp3","springrain.mp3","breeze.mp3","river.mp3","bugs.mp3","beach.mp3"],
     "browser_action": {
       "default_popup": "popup.html",
       "default_icon": {

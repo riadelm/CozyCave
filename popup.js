@@ -49,10 +49,15 @@ console.log(btn);
   let fireplaceBox = document.getElementById("box6");
   //output.innerHTML = slider.value; // Display the default slider value
 
+  let seasonChanger = document.getElementById("changeUp");
+
 // Update the current slider value (each time you drag the slider handle)
 //reload is weird 
 
 //toggle click
+
+//if click down button => change to spring 
+// what changes are the icons, colors, music tracks, every volume resets, every play resets
 
 
 
@@ -62,10 +67,10 @@ var musicToggle3 = false; //snowstorm
 var musicToggle4 = false; //fireplace
 var musicToggle5 = false; //cafe
 var musicToggle6 = false; //train
+var seasonToggle = false;
 //if allll is closed, and no sound => reset volume to 50
 
 window.onload = function() {
-
 
 
     //popup was opened, reload everything
@@ -191,15 +196,143 @@ window.onload = function() {
 };
 
 //volume is relate to storage, for on or off either musicToggle will make that work or another msg will have to be sent
+seasonChanger.addEventListener("click", function(){
+	if(seasonToggle===false){
+		alert('clicked season');
+		//chrome.runtime({season:"spring"})
+		rainBox.style.backgroundColor = "green";
+		seasonToggle=true;
+		chrome.runtime.sendMessage({rainMusic: "off",rainVolume:50,file:"rain", season:"springCng"}, function(response){
+			console.log("resettoggle");
+		   });
+		   chrome.runtime.sendMessage({thunderMusic: "off",thunderVolume:50, file:"thunder", season:"springCng"}, function(response){
+			   console.log("resettoggle");
+			  });
+			  chrome.runtime.sendMessage({trainMusic: "off",trainVolume:50, file:"train", season:"springCng"}, function(response){
+			   console.log("resettoggle");
+			  });
+			  chrome.runtime.sendMessage({fireplaceMusic: "off",fireVolume:50, file:"fireplace", season:"springCng"}, function(response){
+			   console.log("resettoggle");
+			  });
+			  chrome.runtime.sendMessage({snowstormMusic: "off",snowstormVolume:50, file:"snowstorm", season:"springCng"}, function(response){
+			   console.log("resettoggle");
+			  });
+			  chrome.runtime.sendMessage({cafeMusic: "off",cafeVolume:50, file:"cafe", season:"springCng"}, function(response){
+			   console.log("resettoggle");
+			  });
+			  chrome.storage.local.set({rainMusic:"off"}, function() {
+			});
+	
+					   chrome.storage.local.set({rainVolume: 50}, function() {
+			});
+			chrome.storage.local.set({fireplaceMusic:"off"}, function() {
+			});
+	
+					   chrome.storage.local.set({fireplaceVolume: 50}, function() {
+			});
+			chrome.storage.local.set({thunderMusic:"off"}, function() {
+			});
+	
+					   chrome.storage.local.set({thunderVolume: 50}, function() {
+			});
+			chrome.storage.local.set({cafeMusic:"off"}, function() {
+			});
+	
+					   chrome.storage.local.set({cafeVolume: 50}, function() {
+			});
+			chrome.storage.local.set({snowstormMusic:"off"}, function() {
+			});
+	
+					   chrome.storage.local.set({snowstormVolume: 50}, function() {
+			});
+			chrome.storage.local.set({trainMusic:"off"}, function() {
+			});
+	
+					   chrome.storage.local.set({trainVolume: 50}, function() {
+			});
+			musicToggle1=false;
+			musicToggle2=false;
+			musicToggle3=false;
+			musicToggle4=false;
+			musicToggle5=false;
+			musicToggle6=false;
+	}else if(seasonToggle===true){
+		alert('clicked season');
+		//chrome.runtime({season:"fall"})
+		rainBox.style.backgroundColor = "red";
+		seasonToggle=false;
+		chrome.runtime.sendMessage({rainMusic: "off",volume:50,file:"rain", season:"fallCng"}, function(response){
+			console.log("resettoggle");
+		   });
+		   chrome.runtime.sendMessage({thunderMusic: "off",volume:50, file:"thunder", season:"fallCng"}, function(response){
+			   console.log("resettoggle");
+			  });
+			  chrome.runtime.sendMessage({trainMusic: "off",volume:50, file:"train", season:"fallCng"}, function(response){
+			   console.log("resettoggle");
+			  });
+			  chrome.runtime.sendMessage({fireplaceMusic: "off",volume:50, file:"fireplace", season:"fallCng"}, function(response){
+			   console.log("resettoggle");
+			  });
+			  chrome.runtime.sendMessage({snowstormMusic: "off",volume:50, file:"snowstorm", season:"fallCng"}, function(response){
+			   console.log("resettoggle");
+			  });
+			  chrome.runtime.sendMessage({cafeMusic: "off",volume:50, file:"cafe", season:"fallCng"}, function(response){
+			   console.log("resettoggle");
+			  });
+			  chrome.storage.local.set({rainMusic:"off"}, function() {
+			});
+	
+					   chrome.storage.local.set({rainVolume: 50}, function() {
+			});
+			chrome.storage.local.set({fireplaceMusic:"off"}, function() {
+			});
+	
+					   chrome.storage.local.set({fireplaceVolume: 50}, function() {
+			});
+			chrome.storage.local.set({thunderMusic:"off"}, function() {
+			});
+	
+					   chrome.storage.local.set({thunderVolume: 50}, function() {
+			});
+			chrome.storage.local.set({cafeMusic:"off"}, function() {
+			});
+	
+					   chrome.storage.local.set({cafeVolume: 50}, function() {
+			});
+			chrome.storage.local.set({snowstormMusic:"off"}, function() {
+			});
+	
+					   chrome.storage.local.set({snowstormVolume: 50}, function() {
+			});
+			chrome.storage.local.set({trainMusic:"off"}, function() {
+			});
+	
+					   chrome.storage.local.set({trainVolume: 50}, function() {
+			});
+
+	}
+});
+
+
 
 rainSlider.addEventListener("click",function(){
 		var currentRainSliderVolume = rainSlider.value;
-			   chrome.runtime.sendMessage({rainMusic:"on", volume: currentRainSliderVolume, file:"rain"}, function(response) {
-			   	rainBox.style.backgroundColor="#c4815c";
-			   	musicToggle1 = true;
-			   	
-				console.log(response);
-			});
+		if(seasonToggle===true){
+			chrome.runtime.sendMessage({rainMusic:"on", volume: currentRainSliderVolume, file:"rain"}, function(response) {
+				rainBox.style.backgroundColor="#c4815c";
+				musicToggle1 = true;
+				
+			 console.log(response);
+		 });
+		}else{
+			chrome.runtime.sendMessage({rainMusic:"on", volume: currentRainSliderVolume, file:"rain"}, function(response) {
+				rainBox.style.backgroundColor="#c4815c";
+				musicToggle1 = true;
+				
+			 console.log(response);
+		 });
+		}
+		
 			   chrome.storage.local.set({rainMusic:"on"}, function() {
         });
 
@@ -210,12 +343,22 @@ rainSlider.addEventListener("click",function(){
 
 thunderSlider.addEventListener("click",function(){
 		var currentThunderSliderVolume = thunderSlider.value;
-			   chrome.runtime.sendMessage({thunderMusic:"on", volume: currentThunderSliderVolume, file:"thunder"}, function(response) {
+		if(seasonToggle===true){
+			   chrome.runtime.sendMessage({thunderMusic:"on", volume: currentThunderSliderVolume, file:"thunder", season:"spring"}, function(response) {
 			   	thunderBox.style.backgroundColor="#bf6b56";
 			   	musicToggle2 = true;
 			   	//alert("msg sent");
 				console.log(response);
 			});
+		}else{
+			chrome.runtime.sendMessage({thunderMusic:"on", volume: currentThunderSliderVolume, file:"thunder", season:"fall"}, function(response) {
+				thunderBox.style.backgroundColor="#bf6b56";
+				musicToggle2 = true;
+				//alert("msg sent");
+			 console.log(response);
+		 });
+
+		}
 			   chrome.storage.local.set({thunderMusic:"on"}, function() {
         });
 			   	chrome.storage.local.set({thunderVolume: currentThunderSliderVolume}, function() {
@@ -224,12 +367,22 @@ thunderSlider.addEventListener("click",function(){
 
 trainSlider.addEventListener("click",function(){
 		var currentTrainSliderVolume = trainSlider.value;
-			   chrome.runtime.sendMessage({trainMusic:"on", volume: currentTrainSliderVolume, file:"train"}, function(response) {
-			   	trainBox.style.backgroundColor="#b5575a";
-			   	musicToggle6 = true;
-			   	//alert("msg sent");
-				console.log(response);
-			});
+		if(seasonToggle===true){
+			chrome.runtime.sendMessage({trainMusic:"on", volume: currentTrainSliderVolume, file:"train", season:"spring"}, function(response) {
+				trainBox.style.backgroundColor="#b5575a";
+				musicToggle6 = true;
+				//alert("msg sent");
+			 console.log(response);
+		 });
+		}else{
+			chrome.runtime.sendMessage({trainMusic:"on", volume: currentTrainSliderVolume, file:"train", season:"fall"}, function(response) {
+				trainBox.style.backgroundColor="#b5575a";
+				musicToggle6 = true;
+				//alert("msg sent");
+			 console.log(response);
+		 });
+		}
+			   
 			   chrome.storage.local.set({trainMusic:"on"}, function() {
         });
 			   	chrome.storage.local.set({trainVolume: currentTrainSliderVolume}, function() {
@@ -238,12 +391,22 @@ trainSlider.addEventListener("click",function(){
 
 cafeSlider.addEventListener("click",function(){
 		var currentCafeSliderVolume = cafeSlider.value;
-			   chrome.runtime.sendMessage({cafeMusic:"on", volume: currentCafeSliderVolume, file:"cafe"}, function(response) {
-			   	cafeBox.style.backgroundColor="#753240";
-			   	musicToggle5 = true;
-			   	//alert("msg sent");
-				console.log(response);
-			});
+		if(seasonToggle===true){
+			chrome.runtime.sendMessage({cafeMusic:"on", volume: currentCafeSliderVolume, file:"cafe", season:"spring"}, function(response) {
+				cafeBox.style.backgroundColor="#753240";
+				musicToggle5 = true;
+				//alert("msg sent");
+			 console.log(response);
+		 });
+		}else{
+			chrome.runtime.sendMessage({cafeMusic:"on", volume: currentCafeSliderVolume, file:"cafe", season:"fall"}, function(response) {
+				cafeBox.style.backgroundColor="#753240";
+				musicToggle5 = true;
+				//alert("msg sent");
+			 console.log(response);
+		 });
+		}
+			   
 			   chrome.storage.local.set({cafeMusic:"on"}, function() {
         });
 			   	chrome.storage.local.set({cafeVolume: currentCafeSliderVolume}, function() {
@@ -252,12 +415,22 @@ cafeSlider.addEventListener("click",function(){
 
 snowstormSlider.addEventListener("click",function(){
 		var currentSnowstormSliderVolume = snowstormSlider.value;
-			   chrome.runtime.sendMessage({snowstormMusic:"on", volume: currentSnowstormSliderVolume, file:"snowstorm"}, function(response) {
-			   	snowstormBox.style.backgroundColor="#2c2438";
-			   	musicToggle3 = true;
-			   	//alert("msg sent");
-				console.log(response);
-			});
+		if(seasonToggle===true){
+			chrome.runtime.sendMessage({snowstormMusic:"on", volume: currentSnowstormSliderVolume, file:"snowstorm", season:"spring"}, function(response) {
+				snowstormBox.style.backgroundColor="#2c2438";
+				musicToggle3 = true;
+				//alert("msg sent");
+			 console.log(response);
+		 });
+		}else{
+			chrome.runtime.sendMessage({snowstormMusic:"on", volume: currentSnowstormSliderVolume, file:"snowstorm", season:"fall"}, function(response) {
+				snowstormBox.style.backgroundColor="#2c2438";
+				musicToggle3 = true;
+				//alert("msg sent");
+			 console.log(response);
+		 });
+		}
+			   
 			   chrome.storage.local.set({snowstormMusic:"on"}, function() {
         });
 			   	chrome.storage.local.set({snowstormVolume: currentSnowstormSliderVolume}, function() {
@@ -266,12 +439,22 @@ snowstormSlider.addEventListener("click",function(){
 
 fireplaceSlider.addEventListener("click",function(){
 		var currentFireplaceSliderVolume = fireplaceSlider.value;
-			   chrome.runtime.sendMessage({fireplaceMusic:"on", volume: currentFireplaceSliderVolume, file:"fireplace"}, function(response) {
-			   	fireplaceBox.style.backgroundColor="#23202e";
-			   	musicToggle4 = true;
-			   	//alert("msg sent");
-				console.log(response);
-			});
+		if(seasonToggle===true){
+			chrome.runtime.sendMessage({fireplaceMusic:"on", volume: currentFireplaceSliderVolume, file:"fireplace", season:"spring"}, function(response) {
+				fireplaceBox.style.backgroundColor="#23202e";
+				musicToggle4 = true;
+				//alert("msg sent");
+			 console.log(response);
+		 });
+		}else{
+			chrome.runtime.sendMessage({fireplaceMusic:"on", volume: currentFireplaceSliderVolume, file:"fireplace", season:"fall"}, function(response) {
+				fireplaceBox.style.backgroundColor="#23202e";
+				musicToggle4 = true;
+				//alert("msg sent");
+			 console.log(response);
+		 });
+		}
+			   
 			   chrome.storage.local.set({fireplaceMusic:"on"}, function() {
         });
 			   	chrome.storage.local.set({fireplaceVolume: currentFireplaceSliderVolume}, function() {
@@ -283,6 +466,7 @@ fireplaceSlider.addEventListener("click",function(){
 rain.addEventListener("click",function(){
 	//alert("clicked rain");
 	var currentRainSliderVolume = rainSlider.value;
+if(seasonToggle===true){
 			if(musicToggle1===false){
 				chrome.runtime.sendMessage({rainMusic: "on",volume: currentRainSliderVolume, file:"rain"}, function(response) {
 					rainBox.style.backgroundColor="#c4815c";
@@ -306,35 +490,87 @@ rain.addEventListener("click",function(){
 			   	chrome.storage.local.set({rainVolume: 50}, function() {
         });
 			}
+		}else{
+			if(musicToggle1===false){
+				chrome.runtime.sendMessage({rainMusic: "on",volume: currentRainSliderVolume, file:"rain"}, function(response) {
+					rainBox.style.backgroundColor="#c4815c";
+					musicToggle1=true;
+  				console.log(response);
+				});
+					chrome.storage.local.set({rainMusic:"on"}, function() {
+        });
+
+			   	chrome.storage.local.set({rainVolume: currentRainSliderVolume}, function() {
+        });
+			}else if(musicToggle1===true){
+				chrome.runtime.sendMessage({rainMusic: "off",volume:50, file:"rain"}, function(response) {
+					rainBox.style.backgroundColor="#ffcdb2";
+					musicToggle1=false;
+  				console.log(response);
+				});
+					chrome.storage.local.set({rainMusic:"off"}, function() {
+        });
+
+			   	chrome.storage.local.set({rainVolume: 50}, function() {
+        });
+			}
+		}
 	
     
 	});
 thunder.addEventListener("click",function(){
 	//alert("clicked thunda");
 	var currentThunderSliderVolume = thunderSlider.value;
-			if(musicToggle2===false){
-				chrome.runtime.sendMessage({thunderMusic: "on",volume: currentThunderSliderVolume, file:"thunder"}, function(response) {
-					thunderBox.style.backgroundColor="#bf6b56";
-					musicToggle2=true;
-  				console.log(response);
-				});
-				chrome.storage.local.set({thunderMusic:"on"}, function() {
-        });
+	if(seasonToggle===true){
+		if(musicToggle2===false){
+			chrome.runtime.sendMessage({thunderMusic: "on",volume: currentThunderSliderVolume, file:"thunder",season:"spring"}, function(response) {
+				thunderBox.style.backgroundColor="#bf6b56";
+				musicToggle2=true;
+			  console.log(response);
+			});
+			chrome.storage.local.set({thunderMusic:"on"}, function() {
+	});
 
-			   	chrome.storage.local.set({thunderVolume: currentThunderSliderVolume}, function() {
-        });
-			}else if(musicToggle2===true){
-				chrome.runtime.sendMessage({thunderMusic: "off",volume:currentThunderSliderVolume, file:"thunder"}, function(response) {
-					thunderBox.style.backgroundColor="#ffb4a2";
-					musicToggle2=false;
-  				console.log(response);
-				});
-				chrome.storage.local.set({thunderMusic:"off"}, function() {
-        });
+			   chrome.storage.local.set({thunderVolume: currentThunderSliderVolume}, function() {
+	});
+		}else if(musicToggle2===true){
+			chrome.runtime.sendMessage({thunderMusic: "off",volume:currentThunderSliderVolume, file:"thunder",season:"spring"}, function(response) {
+				thunderBox.style.backgroundColor="#ffb4a2";
+				musicToggle2=false;
+			  console.log(response);
+			});
+			chrome.storage.local.set({thunderMusic:"off"}, function() {
+	});
 
-			   	chrome.storage.local.set({thunderVolume: currentThunderSliderVolume}, function() {
-        });
-			}
+			   chrome.storage.local.set({thunderVolume: currentThunderSliderVolume}, function() {
+	});
+		}
+	}else{
+		if(musicToggle2===false){
+			chrome.runtime.sendMessage({thunderMusic: "on",volume: currentThunderSliderVolume, file:"thunder",season:"fall"}, function(response) {
+				thunderBox.style.backgroundColor="#bf6b56";
+				musicToggle2=true;
+			  console.log(response);
+			});
+			chrome.storage.local.set({thunderMusic:"on"}, function() {
+	});
+
+			   chrome.storage.local.set({thunderVolume: currentThunderSliderVolume}, function() {
+	});
+		}else if(musicToggle2===true){
+			chrome.runtime.sendMessage({thunderMusic: "off",volume:50, file:"thunder",season:"fall"}, function(response) {
+				thunderBox.style.backgroundColor="#ffb4a2";
+				musicToggle2=false;
+			  console.log(response);
+			});
+			chrome.storage.local.set({thunderMusic:"off"}, function() {
+	});
+
+			   chrome.storage.local.set({thunderVolume: 50}, function() {
+	});
+		}
+	}
+			
 	
     
 	});
@@ -342,82 +578,159 @@ thunder.addEventListener("click",function(){
 snowstorm.addEventListener("click",function(){
 	//alert("clicked snew");
 	var currentSnowstormSliderVolume = snowstormSlider.value;
-			if(musicToggle3===false){
-				chrome.runtime.sendMessage({snowstormMusic: "on",volume: currentSnowstormSliderVolume, file:"snowstorm"}, function(response) {
-					snowstormBox.style.backgroundColor="#2c2438";
-					musicToggle3=true;
-  				console.log(response);
-				});
-				chrome.storage.local.set({snowstormMusic:"on"}, function() {
-        });
-				chrome.storage.local.set({snowstormVolume: currentSnowstormSliderVolume}, function() {
-        });
-			}else if(musicToggle3===true){
-				chrome.runtime.sendMessage({snowstormMusic: "off",volume:50, file:"snowstorm"}, function(response) {
-					snowstormBox.style.backgroundColor="#6d6875";
-					musicToggle3=false;
-  				console.log(response);
-				});
-				chrome.storage.local.set({snowstormMusic:"off"}, function() {
-        });
-				chrome.storage.local.set({snowstormVolume: 50}, function() {
-        });
-			}
-	
+	if(seasonToggle===true){
+		if(musicToggle3===false){
+			chrome.runtime.sendMessage({snowstormMusic: "on",volume: currentSnowstormSliderVolume, file:"snowstorm",season:"spring"}, function(response) {
+				snowstormBox.style.backgroundColor="#2c2438";
+				musicToggle3=true;
+			  console.log(response);
+			});
+			chrome.storage.local.set({snowstormMusic:"on"}, function() {
+	});
+			chrome.storage.local.set({snowstormVolume: currentSnowstormSliderVolume}, function() {
+	});
+		}else if(musicToggle3===true){
+			chrome.runtime.sendMessage({snowstormMusic: "off",volume:50, file:"snowstorm",season:"spring"}, function(response) {
+				snowstormBox.style.backgroundColor="#6d6875";
+				musicToggle3=false;
+			  console.log(response);
+			});
+			chrome.storage.local.set({snowstormMusic:"off"}, function() {
+	});
+			chrome.storage.local.set({snowstormVolume: 50}, function() {
+	});
+		}
+
+	}else{
+		if(musicToggle3===false){
+			chrome.runtime.sendMessage({snowstormMusic: "on",volume: currentSnowstormSliderVolume, file:"snowstorm",season:"fall"}, function(response) {
+				snowstormBox.style.backgroundColor="#2c2438";
+				musicToggle3=true;
+			  console.log(response);
+			});
+			chrome.storage.local.set({snowstormMusic:"on"}, function() {
+	});
+			chrome.storage.local.set({snowstormVolume: currentSnowstormSliderVolume}, function() {
+	});
+		}else if(musicToggle3===true){
+			chrome.runtime.sendMessage({snowstormMusic: "off",volume:50, file:"snowstorm",season:"fall"}, function(response) {
+				snowstormBox.style.backgroundColor="#6d6875";
+				musicToggle3=false;
+			  console.log(response);
+			});
+			chrome.storage.local.set({snowstormMusic:"off"}, function() {
+	});
+			chrome.storage.local.set({snowstormVolume: 50}, function() {
+	});
+		}
+
+	}
+			
     
 	});
 
 fireplace.addEventListener("click",function(){
 	//alert("clicked faya");
 	var currentFireplaceSliderVolume = fireplaceSlider.value;
-			if(musicToggle4===false){
-				chrome.runtime.sendMessage({fireplaceMusic: "on", volume: currentFireplaceSliderVolume, file:"fireplace"}, function(response) {
-					fireplaceBox.style.backgroundColor="#23202e";
-					musicToggle4=true;
-  				console.log(response);
-				});
-				chrome.storage.local.set({fireplaceMusic:"on"}, function() {
-        });
-				chrome.storage.local.set({fireplaceVolume: currentFireplaceSliderVolume}, function() {
-        });
-			}else if(musicToggle4===true){
-				chrome.runtime.sendMessage({fireplaceMusic: "off", volume: 50, file:"fireplace"}, function(response) {
-					fireplaceBox.style.backgroundColor="#565264";
-					musicToggle4=false;
-  				console.log(response);
-				});
-				chrome.storage.local.set({fireplaceMusic:"off"}, function() {
-        });
-				chrome.storage.local.set({fireplaceVolume: 50}, function() {
-        });
-			}
+	if(seasonToggle===true){
+		if(musicToggle4===false){
+			chrome.runtime.sendMessage({fireplaceMusic: "on", volume: currentFireplaceSliderVolume, file:"fireplace",season:"spring"}, function(response) {
+				fireplaceBox.style.backgroundColor="#23202e";
+				musicToggle4=true;
+			  console.log(response);
+			});
+			chrome.storage.local.set({fireplaceMusic:"on"}, function() {
+	});
+			chrome.storage.local.set({fireplaceVolume: currentFireplaceSliderVolume}, function() {
+	});
+		}else if(musicToggle4===true){
+			chrome.runtime.sendMessage({fireplaceMusic: "off", volume: 50, file:"fireplace",season:"spring"}, function(response) {
+				fireplaceBox.style.backgroundColor="#565264";
+				musicToggle4=false;
+			  console.log(response);
+			});
+			chrome.storage.local.set({fireplaceMusic:"off"}, function() {
+	});
+			chrome.storage.local.set({fireplaceVolume: 50}, function() {
+	});
+		}
+	}else{
+		if(musicToggle4===false){
+			chrome.runtime.sendMessage({fireplaceMusic: "on", volume: currentFireplaceSliderVolume, file:"fireplace",season:"fall"}, function(response) {
+				fireplaceBox.style.backgroundColor="#23202e";
+				musicToggle4=true;
+			  console.log(response);
+			});
+			chrome.storage.local.set({fireplaceMusic:"on"}, function() {
+	});
+			chrome.storage.local.set({fireplaceVolume: currentFireplaceSliderVolume}, function() {
+	});
+		}else if(musicToggle4===true){
+			chrome.runtime.sendMessage({fireplaceMusic: "off", volume: 50, file:"fireplace",season:"fall"}, function(response) {
+				fireplaceBox.style.backgroundColor="#565264";
+				musicToggle4=false;
+			  console.log(response);
+			});
+			chrome.storage.local.set({fireplaceMusic:"off"}, function() {
+	});
+			chrome.storage.local.set({fireplaceVolume: 50}, function() {
+	});
+		}
+
+	}
+			
 	
     
 	});
 cafe.addEventListener("click",function(){
 	//alert("clicked cofi");
 	var currentCafeSliderVolume = cafeSlider.value;
-			if(musicToggle5===false){
-				chrome.runtime.sendMessage({cafeMusic: "on",volume: currentCafeSliderVolume, file:"cafe"}, function(response) {
-					cafeBox.style.backgroundColor="#753240";
-					musicToggle5=true;
-  				console.log(response);
-				});
-				chrome.storage.local.set({cafeMusic:"on"}, function() {
-        });
-				chrome.storage.local.set({cafeVolume: currentCafeSliderVolume}, function() {
-        });
-			}else if(musicToggle5===true){
-				chrome.runtime.sendMessage({cafeMusic: "off",volume:50, file:"cafe"}, function(response) {
-					cafeBox.style.backgroundColor="#b5838d";
-					musicToggle5=false;
-  				console.log(response);
-				});
-				chrome.storage.local.set({cafeMusic:"off"}, function() {
-        });
-				chrome.storage.local.set({cafeVolume: 50}, function() {
-        });
-			}
+	if(seasonToggle===true){
+		if(musicToggle5===false){
+			chrome.runtime.sendMessage({cafeMusic: "on",volume: currentCafeSliderVolume, file:"cafe",season:"spring"}, function(response) {
+				cafeBox.style.backgroundColor="#753240";
+				musicToggle5=true;
+			  console.log(response);
+			});
+			chrome.storage.local.set({cafeMusic:"on"}, function() {
+	});
+			chrome.storage.local.set({cafeVolume: currentCafeSliderVolume}, function() {
+	});
+		}else if(musicToggle5===true){
+			chrome.runtime.sendMessage({cafeMusic: "off",volume:50, file:"cafe",season:"spring"}, function(response) {
+				cafeBox.style.backgroundColor="#b5838d";
+				musicToggle5=false;
+			  console.log(response);
+			});
+			chrome.storage.local.set({cafeMusic:"off"}, function() {
+	});
+			chrome.storage.local.set({cafeVolume: 50}, function() {
+	});
+		}
+	}else{
+		if(musicToggle5===false){
+			chrome.runtime.sendMessage({cafeMusic: "on",volume: currentCafeSliderVolume, file:"cafe",season:"fall"}, function(response) {
+				cafeBox.style.backgroundColor="#753240";
+				musicToggle5=true;
+			  console.log(response);
+			});
+			chrome.storage.local.set({cafeMusic:"on"}, function() {
+	});
+			chrome.storage.local.set({cafeVolume: currentCafeSliderVolume}, function() {
+	});
+		}else if(musicToggle5===true){
+			chrome.runtime.sendMessage({cafeMusic: "off",volume:50, file:"cafe",season:"fall"}, function(response) {
+				cafeBox.style.backgroundColor="#b5838d";
+				musicToggle5=false;
+			  console.log(response);
+			});
+			chrome.storage.local.set({cafeMusic:"off"}, function() {
+	});
+			chrome.storage.local.set({cafeVolume: 50}, function() {
+	});
+		}
+	}
+			
 	
     
 	});
@@ -425,28 +738,54 @@ cafe.addEventListener("click",function(){
 train.addEventListener("click",function(){
 	//alert("clicked trrrrain");
 	var currentTrainSliderVolume = trainSlider.value;
-			if(musicToggle6===false){
-				chrome.runtime.sendMessage({trainMusic: "on",volume: currentTrainSliderVolume, file:"train"}, function(response) {
-					trainBox.style.backgroundColor="#b5575a";
-					musicToggle6=true;
-  				console.log(response);
-				});
-				chrome.storage.local.set({trainMusic:"on"}, function() {
-        });
+	if(seasonToggle===true){
+		if(musicToggle6===false){
+			chrome.runtime.sendMessage({trainMusic: "on",volume: currentTrainSliderVolume, file:"train",season:"spring"}, function(response) {
+				trainBox.style.backgroundColor="#b5575a";
+				musicToggle6=true;
+			  console.log(response);
+			});
+			chrome.storage.local.set({trainMusic:"on"}, function() {
+	});
 
-			   	chrome.storage.local.set({trainVolume: currentTrainSliderVolume}, function() {
-        });
-			}else if(musicToggle6===true){
-				chrome.runtime.sendMessage({trainMusic: "off",volume:50, file:"train"}, function(response) {
-					trainBox.style.backgroundColor="#e5989b";
-					musicToggle6=false;
-  				console.log(response);
-				});
-				chrome.storage.local.set({trainMusic:"off"}, function() {
-        });
-			   	chrome.storage.local.set({trainVolume: 50}, function() {
-        });
-			}
+			   chrome.storage.local.set({trainVolume: currentTrainSliderVolume}, function() {
+	});
+		}else if(musicToggle6===true){
+			chrome.runtime.sendMessage({trainMusic: "off",volume:50, file:"train",season:"spring"}, function(response) {
+				trainBox.style.backgroundColor="#e5989b";
+				musicToggle6=false;
+			  console.log(response);
+			});
+			chrome.storage.local.set({trainMusic:"off"}, function() {
+	});
+			   chrome.storage.local.set({trainVolume: 50}, function() {
+	});
+		}
+	}else{
+		if(musicToggle6===false){
+			chrome.runtime.sendMessage({trainMusic: "on",volume: currentTrainSliderVolume, file:"train",season:"fall"}, function(response) {
+				trainBox.style.backgroundColor="#b5575a";
+				musicToggle6=true;
+			  console.log(response);
+			});
+			chrome.storage.local.set({trainMusic:"on"}, function() {
+	});
+
+			   chrome.storage.local.set({trainVolume: currentTrainSliderVolume}, function() {
+	});
+		}else if(musicToggle6===true){
+			chrome.runtime.sendMessage({trainMusic: "off",volume:50, file:"train",season:"fall"}, function(response) {
+				trainBox.style.backgroundColor="#e5989b";
+				musicToggle6=false;
+			  console.log(response);
+			});
+			chrome.storage.local.set({trainMusic:"off"}, function() {
+	});
+			   chrome.storage.local.set({trainVolume: 50}, function() {
+	});
+		}
+	}
+			
 	
     
 	});
