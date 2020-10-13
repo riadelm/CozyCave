@@ -86,42 +86,48 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
       			rainAudio.play();
     		} else if (message.rainMusic == 'off') {
       			rainAudio.pause();
-    		}
+			}
+			break;
 		case "thunder":
 			thunderAudio.volume = message.volume/100;
 			if (message.thunderMusic == 'on') {
       			thunderAudio.play();
     		} else if (message.thunderMusic == 'off') {
       			thunderAudio.pause();
-    		}
+			}
+			break;
 		case "snowstorm":
 			snowstormAudio.volume = message.volume/100;
 			if (message.snowstormMusic == 'on') {
       			snowstormAudio.play();
     		} else if (message.snowstormMusic == 'off') {
       			snowstormAudio.pause();
-    		}
+			}
+			break;
 		case "fireplace":
 			fireplaceAudio.volume = message.volume/100;
 			if (message.fireplaceMusic == 'on') {
       			fireplaceAudio.play();
     		} else if (message.fireplaceMusic == 'off') {
       			fireplaceAudio.pause();
-    		}
+			}
+			break;
 		case "train":
 			trainAudio.volume = message.volume/100;
 			if (message.trainMusic == 'on') {
       			trainAudio.play();
     		} else if (message.trainMusic == 'off') {
       			trainAudio.pause();
-    		}
+			}
+			break;
 		case "cafe":
 			cafeAudio.volume = message.volume/100;
 			if (message.cafeMusic == 'on') {
       			cafeAudio.play();
     		} else if (message.cafeMusic == 'off') {
       			cafeAudio.pause();
-    		}
+			}
+			break;
 	}
 
   });
