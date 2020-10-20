@@ -71,6 +71,7 @@ var seasonToggle = false;
 
 //=======color palettes========
 //spring normal
+
 var ULColor1 ="#739855";
 var URColor1 ="#91B077";
 var MLColor1 ="#B1C9A7";
@@ -233,13 +234,13 @@ window.onload = function() {
 function setColorOnChange(rainBox, ULColor1, ULColor2){
 	rainBox.style.backgroundColor= ULColor1;
 
-	rainBox.addEventListener("mouseover",function(){
+	/*rainBox.addEventListener("mouseover",function(){
 		rainBox.style.backgroundColor= ULColor2;
 		});
 		
 		rainBox.addEventListener("mouseout", function() {
 		rainBox.style.backgroundColor= ULColor1;
-		});
+		});*/
 		
 		
 }
@@ -248,7 +249,7 @@ seasonChanger.addEventListener("click", function(){
 	if(seasonToggle===false){
 		alert('clicked season');
 		//chrome.runtime({season:"spring"})
-		
+		//swapStyleSheet("popupSpring.css");
 		setColorOnChange(rainBox,ULColor1,ULColor2);
 		setColorOnChange(thunderBox,URColor1,URColor2);
 		setColorOnChange(trainBox,MLColor1,MLColor2);
@@ -310,10 +311,11 @@ seasonChanger.addEventListener("click", function(){
 			musicToggle4=false;
 			musicToggle5=false;
 			musicToggle6=false;
+			seasonToggle = true;
 	}else if(seasonToggle===true){
 		alert('clicked season');
 		//chrome.runtime({season:"fall"})
-		
+		//swapStyleSheet("popup.css");
 		seasonToggle=false;
 		setColorOnChange(rainBox,ULColor3,ULColor4);
 		setColorOnChange(thunderBox,URColor3,URColor4);
@@ -376,7 +378,7 @@ seasonChanger.addEventListener("click", function(){
 			musicToggle4=false;
 			musicToggle5=false;
 			musicToggle6=false;
-
+			
 	}
 });
 

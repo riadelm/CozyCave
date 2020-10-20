@@ -1,0 +1,208 @@
+/*
+ * Copyright (C) 2020 Riad El Mahmoudy
+ * This file is subject to the terms and conditions defined in
+ * file "LICENSE.txt", which is part of this source code package.
+ */
+
+ body{
+    height: 600px; /* popovers have a max height of 600px */
+    width: 372px;
+    padding: 0;
+    margin: 0;
+    border-bottom-left-radius: 50px 20px;
+    border-bottom-right-radius: 50px 20px;
+   
+  }
+.square{
+width:186px;
+height:186px;
+ padding: 0;
+    margin: 0;
+
+}
+.row{
+ height:186px;
+ display:flex;
+}
+
+.brown{
+width:186px;
+height:186px;
+ padding: 0;
+    margin: 0;
+    -o-transition:.5s;
+-ms-transition:.5s;
+-moz-transition:.5s;
+-webkit-transition:.5s;
+/* ...and now for the proper property */
+transition:.5s;
+}
+
+.green{
+width:186px;
+height:186px;
+ padding: 0;
+    margin: 0;
+    -o-transition:.5s;
+-ms-transition:.5s;
+-moz-transition:.5s;
+-webkit-transition:.5s;
+/* ...and now for the proper property */
+transition:.5s;
+}
+
+.green:hover{
+/*filter: brightness(120%);*/
+}
+.brown:hover{
+/*filter: brightness(120%);*/
+}
+
+#box1{
+background-color:#739855;
+}
+
+#box2{
+background-color:#91B077;
+}
+
+#box3{
+background-color:#B1C9A7;
+}
+
+#box4{
+background-color:#F5DBCE;
+}
+
+#box5{
+background-color:#EFAFC0;
+}
+
+#box6{
+background-color:#EE6199;
+}
+
+#box1:hover{
+background-color:#46632e;
+}
+
+#box2:hover{
+background-color:#627551;
+}
+
+#box3:hover{
+background-color:#7c8a76;
+}
+
+#box4:hover{
+background-color:#c79c87;
+}
+
+#box5:hover{
+background-color:#bf6f84;
+}
+
+#box6:hover{
+background-color:#bd2d67;
+}
+
+
+.icon{
+width: 100%; 
+max-width: 100%;
+transform:scale(0.4,0.4);
+filter:invert(100%);
+ -o-transition:.5s;
+-ms-transition:.5s;
+-moz-transition:.5s;
+-webkit-transition:.5s;
+/* ...and now for the proper property */
+transition:.5s;
+}
+#iconSlider{
+
+ padding: 0;
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+ width: 42px; 
+max-width: 100px;
+height:42px;
+transform:scale(1,1);
+filter:invert(100%);
+ -o-transition:.5s;
+-ms-transition:.5s;
+-moz-transition:.5s;
+-webkit-transition:.5s;
+/* ...and now for the proper property */
+transition:.5s;
+}
+
+
+.icon:hover{
+transform:scale(0.5,0.5);
+}
+
+
+
+input[type="range"] {
+-webkit-appearance: none;
+}
+
+input[type="range"]:focus {
+outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+background: white;
+height: 1px;
+margin-top: -100px;
+}
+
+input[type="range"]::-moz-range-track {
+background: white;
+height: 1px;
+margin-top: -100px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+height: 15px;
+width: 15px;
+background: white;
+margin-top: -7.5px;
+border-radius: 50%;
+}
+
+input[type="range"]::-moz-range-thumb {
+height: 15px;
+width: 15px;
+background: pink;
+margin-top: -5px;
+border-radius: 50%;
+}
+
+.slider{
+max-width: 100%;
+width:100%;
+transform:scale(0.7,0.7);
+margin-top:-20px;
+padding: 0;
+}
+
+.slidercontainer{
+margin:0;
+padding: 0;
+}
+
+#changeUp{
+height: 42px;
+width: 372px;
+background-color:#465353;
+
+}
+
+
+
+
+
